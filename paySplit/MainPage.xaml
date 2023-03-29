@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="paySplit.MainPage">
+
+    <ContentPage.Resources>
+        <Color x:Key="standard">#444444</Color>
+        <Color x:Key="light">#6d6d6d</Color>
+        <Color x:Key="ultralight">#8f8f8f</Color>
+
+        <Color x:Key="Dark">#4fe8eb</Color>
+    </ContentPage.Resources>
+    
+   <Grid BackgroundColor="{StaticResource standard}" Margin="15" RowDefinitions=".3*,.7*">
+      <Frame Margin="15" BackgroundColor="{StaticResource light}" Grid.Row="0">
+           <Grid >
+               <Grid.RowDefinitions>
+                   <RowDefinition Height=".1*"/>
+                   <RowDefinition Height=".9*"/>
+               </Grid.RowDefinitions>
+               <Grid.ColumnDefinitions>
+                   <ColumnDefinition />
+                   <ColumnDefinition Width="1"/>
+                   <ColumnDefinition />
+               </Grid.ColumnDefinitions>
+               <Label TextColor="{StaticResource Dark}" HorizontalTextAlignment="Center" FontAttributes="Bold" Grid.Row="0" Grid.ColumnSpan="3">Total Per Person</Label>
+               <Label x:Name="amount_to_pay" Grid.Row="1" Grid.Column="0" FontSize="35" HorizontalTextAlignment="Center" FontAttributes="Bold" VerticalTextAlignment="Center" TextColor="White">$0.00</Label>
+               <BoxView Grid.Row="1" Grid.Column="1" Margin="0,10,0,10" Color="#adadad"></BoxView>
+               <Grid Grid.Row="1" Grid.Column="2">
+                   <Grid.RowDefinitions>
+                       <RowDefinition Height=".5*"/>
+                       <RowDefinition Height=".5*"/>
+                   </Grid.RowDefinitions>
+                  <VerticalStackLayout Grid.Row="0">
+                       <Label FontSize="Medium" HorizontalTextAlignment="Center" FontAttributes="Bold" VerticalTextAlignment="Center" TextColor="#adadad">Subtotal</Label>
+                       <Label x:Name="total_bill" FontSize="Medium"  HorizontalTextAlignment="Center" FontAttributes="Bold" VerticalTextAlignment="Center" TextColor="White">0.00</Label>
+                   </VerticalStackLayout>
+                   <VerticalStackLayout Grid.Row="1">
+                       <Label FontSize="Medium" HorizontalTextAlignment="Center" FontAttributes="Bold" VerticalTextAlignment="Center" TextColor="#adadad">Tip</Label>
+                       <Label x:Name="total_tip" FontSize="Medium" HorizontalTextAlignment="Center" FontAttributes="Bold" VerticalTextAlignment="Center" TextColor="White">0.00</Label>
+                   </VerticalStackLayout>
+               </Grid>
+           </Grid>
+      </Frame>
+       <Grid Grid.Row="1" Margin="0">
+           <Grid.ColumnDefinitions>
+               <ColumnDefinition Width=".3*"/>
+               <ColumnDefinition Width=".7*"/>
+           </Grid.ColumnDefinitions>
+           <Grid.RowDefinitions>
+                <RowDefinition Height=".25*"/>
+                <RowDefinition Height=".25*"/>
+                <RowDefinition Height=".25*"/>
+                <RowDefinition Height=".25*"/>
+           </Grid.RowDefinitions>
+           <Label TextColor="{StaticResource ultralight}" Grid.Column="0" Grid.Row="0"  FontAttributes="Bold" VerticalTextAlignment="Center">Enter Your Bill: $</Label>
+           <Label TextColor="{StaticResource ultralight}" Grid.Column="0" Grid.Row="1"  FontAttributes="Bold" VerticalTextAlignment="Center">Choose Your Tip </Label>
+           <Label x:Name="tip_percentage" TextColor="{StaticResource ultralight}" Grid.Column="0" Grid.Row="2"  FontAttributes="Bold" VerticalTextAlignment="Center">Tip: 0%</Label>
+           <Label TextColor="{StaticResource ultralight}" Grid.Column="0" Grid.Row="3"  FontAttributes="Bold" VerticalTextAlignment="Center">Split The Total</Label>
+           <Entry x:Name="bill_amount" Grid.Column="1" Grid.Row="0" VerticalOptions="Center" Keyboard="Numeric" BackgroundColor="{StaticResource standard}" TextColor="{StaticResource ultralight}" Completed="bill_amount_Completed" Placeholder="0.00"></Entry>
+           <Grid Grid.Column="1" Grid.Row="1">
+               <Grid.ColumnDefinitions>
+                   <ColumnDefinition Width=".025*"/>
+                   <ColumnDefinition Width=".3*"/>
+                   <ColumnDefinition Width=".025*"/>
+                   <ColumnDefinition Width=".3*"/>
+                   <ColumnDefinition Width=".025*"/>
+                   <ColumnDefinition Width=".3*"/>
+                   <ColumnDefinition Width=".025*"/>
+               </Grid.ColumnDefinitions>
+               <Button x:Name="ten_percent_tip" Grid.Column="1" Text="10%" HeightRequest="70" Clicked="ten_percent_tip_Clicked"></Button>
+               <Button x:Name="fifteen_percent_tip" Grid.Column="3" Text="15%" HeightRequest="70" Clicked="fifteen_percent_tip_Clicked"></Button>
+               <Button x:Name="twenty_percent_tip" Grid.Column="5" Text="20%" HeightRequest="70" Clicked="twenty_percent_tip_Clicked"></Button>
+           </Grid>
+           <Slider x:Name="tip_slider" Grid.Column="1" Grid.Row="2" Maximum="100" Minimum="0" VerticalOptions="Center" ValueChanged="tip_slider_ValueChanged" ></Slider>
+           <Grid Grid.Column="1" Grid.Row="3">
+               <Grid.ColumnDefinitions>
+                   <ColumnDefinition Width=".1"/>
+                   <ColumnDefinition Width=".225*"/>
+                   <ColumnDefinition Width=".35*"/>
+                   <ColumnDefinition Width=".225*"/>
+                   <ColumnDefinition Width=".1*"/>                  
+               </Grid.ColumnDefinitions>
+               
+               <Label x:Name="person_count" Grid.Column="2" Text="1" BackgroundColor="{StaticResource light}" HeightRequest="70" FontAttributes="Bold" FontSize="Large" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" Margin="-5,0,-5,0"/>
+               <Button x:Name="person_count_minus" Grid.Column="1" Text="-" HeightRequest="70" FontAttributes="Bold" FontSize="Large" Clicked="person_count_minus_Clicked"></Button>
+               <Button x:Name="person_count_plus" Grid.Column="3" Text="+" HeightRequest="70" FontAttributes="Bold" FontSize="Large" Clicked="person_count_plus_Clicked"></Button>
+
+           </Grid>
+       </Grid>
+   </Grid>
+    
+
+</ContentPage>
+
+
+
+                  
